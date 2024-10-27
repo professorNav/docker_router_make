@@ -84,3 +84,13 @@ sudo ip netns exec $r1_id ip link set 'eth1' up
 sudo ip netns exec $r1_id ip link set 'lo' up
 sudo ip netns exec $c2_id ip link set 'eth0' up
 sudo ip netns exec $c2_id ip link set 'lo' up
+
+# lets set c1 container ip to 192.168.10.2
+sudo ip netns exec $c1_id ip addr add 192.168.10.2/24 dev eth0
+
+# lets set r1 ips to 192.168.10.1 and 192.168.11.1
+sudo ip netns exec $r1_id ip addr add 192.168.10.1/24 dev eth0
+sudo ip netns exec $r1_id ip addr add 192.168.11.1/24 dev eth1
+
+# lets set c2 container ip to 192.168.11.2
+sudo ip netns exec $c2_id ip addr add 192.168.11.2/24 dev eth0
